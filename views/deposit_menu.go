@@ -16,9 +16,16 @@ func DepositMenu() {
 	fmt.Print("Insert your pin: ")
 	fmt.Scanln(&pin)
 
-	// check pin & increase balance
+	login := controllers.Login(controllers.LoginId, pin)
 
-	fmt.Println("Success deposit Rp", amount)
+	if login {
+		err := controllers.Deposit(amount)
+		if err != nil {
+			panic(err.Error())
+		}
+	} else {
+		fmt.Println("Wrong pin!")
+	}
 
 	controllers.UserInput("[Press enter to go back] ", &controllers.Input)
 	MainMenu()

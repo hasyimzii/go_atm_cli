@@ -16,9 +16,16 @@ func WithdrawMenu() {
 	fmt.Print("Insert your pin: ")
 	fmt.Scanln(&pin)
 
-	// check pin & decrease balance
+	login := controllers.Login(controllers.LoginId, pin)
 
-	fmt.Println("Success withdraw Rp", amount)
+	if login {
+		err := controllers.Withdraw(amount)
+		if err != nil {
+			panic(err.Error())
+		}
+	} else {
+		fmt.Println("Wrong pin!")
+	}
 
 	controllers.UserInput("[Press enter to go back] ", &controllers.Input)
 	MainMenu()

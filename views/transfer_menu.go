@@ -19,9 +19,16 @@ func TransferMenu() {
 	fmt.Print("Insert your pin: ")
 	fmt.Scanln(&pin)
 
-	// check id, pin, decrease this balance, & increase other balance
+	login := controllers.Login(controllers.LoginId, pin)
 
-	fmt.Println("Success transfer Rp", amount, "to", "name")
+	if login {
+		err := controllers.Transfer(id, amount)
+		if err != nil {
+			panic(err.Error())
+		}
+	} else {
+		fmt.Println("Wrong pin!")
+	}
 
 	controllers.UserInput("[Press enter to go back] ", &controllers.Input)
 	MainMenu()

@@ -4,11 +4,10 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/controllers"
-	"github.com/hasyimzii/go_atm_cli/models"
 )
 
 func AccountMenu() {
-	var account models.Account = models.Account{Id: "0001", Name: "Asd", Balance: 10000}
+	account := controllers.GetAccount()
 
 	fmt.Println("Your Account")
 	fmt.Println("Id:", account.Id)
