@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/sirupsen/logrus"
 )
 
 func Transfer(id string, amount int) error {
@@ -11,7 +12,9 @@ func Transfer(id string, amount int) error {
 	for index, account := range Accounts {
 		if account.Id == LoginId {
 			if amount > account.Balance {
-				fmt.Println("Transfer failed, insufficient balance!")
+				msg := "Transfer failed, insufficient balance!"
+				logrus.Info("[Account: ", LoginName, "] ", msg)
+				fmt.Println(msg)
 			} else {
 				(&Accounts[index]).Balance -= amount
 			}
@@ -34,6 +37,8 @@ func Transfer(id string, amount int) error {
 		return err
 	}
 
-	fmt.Println("Success transfer Rp", amount, "to", targetName)
+	msg := fmt.Sprint("Success transfer Rp ", amount, " to ", targetName)
+	logrus.Info("[Account: ", LoginName, "] ", msg)
+	fmt.Println(msg)
 	return nil
 }

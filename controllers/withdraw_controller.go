@@ -4,13 +4,16 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/sirupsen/logrus"
 )
 
 func Withdraw(amount int) error {
 	for index, account := range Accounts {
 		if account.Id == LoginId {
 			if amount > account.Balance {
-				fmt.Println("Withdraw failed, insufficient balance!")
+				msg := "Withdraw failed, insufficient balance!"
+				logrus.Info("[Account: ", LoginName, "] ", msg)
+				fmt.Println(msg)
 			} else {
 				(&Accounts[index]).Balance -= amount
 			}
@@ -24,6 +27,8 @@ func Withdraw(amount int) error {
 		return err
 	}
 
-	fmt.Println("Success withdraw Rp", amount)
+	msg := fmt.Sprint("Success withdraw Rp ", amount)
+	logrus.Info("[Account: ", LoginName, "] ", msg)
+	fmt.Println(msg)
 	return nil
 }

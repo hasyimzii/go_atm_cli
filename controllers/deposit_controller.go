@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/sirupsen/logrus"
 )
 
 func Deposit(amount int) error {
@@ -20,6 +21,8 @@ func Deposit(amount int) error {
 		return err
 	}
 
-	fmt.Println("Success deposit Rp", amount)
+	msg := fmt.Sprint("Success deposit Rp ", amount)
+	logrus.Info("[Account: ", LoginName, "] ", msg)
+	fmt.Println(msg)
 	return nil
 }
