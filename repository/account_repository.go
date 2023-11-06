@@ -7,20 +7,20 @@ import (
 	"github.com/hasyimzii/go_atm_cli/models"
 )
 
-type AccountRepository interface {
+type AccountRepoInterface interface {
 	FindAll() ([]models.Account, error)
 	Update(accounts []models.Account) error
 }
 
-type accountRepositoryImpl struct {
+type accountRepository struct {
 	file string
 }
 
-func NewAccountRepository() AccountRepository {
-	return &accountRepositoryImpl{file: "./models/data.json"}
+func NewAccountRepo() AccountRepoInterface {
+	return &accountRepository{file: "./models/data.json"}
 }
 
-func (repo *accountRepositoryImpl) FindAll() ([]models.Account, error) {
+func (repo *accountRepository) FindAll() ([]models.Account, error) {
 	file, err := os.ReadFile(repo.file)
 	if err != nil {
 		return nil, err
@@ -35,7 +35,7 @@ func (repo *accountRepositoryImpl) FindAll() ([]models.Account, error) {
 	return accounts, nil
 }
 
-func (repo *accountRepositoryImpl) Update(accounts []models.Account) error {
+func (repo *accountRepository) Update(accounts []models.Account) error {
 	data, err := json.Marshal(accounts)
 	if err != nil {
 		return err

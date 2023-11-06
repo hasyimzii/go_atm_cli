@@ -20,7 +20,7 @@ func Withdraw(amount int) error {
 		}
 	}
 
-	accountRepository := repository.NewAccountRepository()
+	accountRepository := repository.NewAccountRepo()
 
 	err := accountRepository.Update(Accounts)
 	if err != nil {

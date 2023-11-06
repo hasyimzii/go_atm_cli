@@ -10,7 +10,7 @@ var LoginId, LoginName string
 var Accounts []models.Account
 
 func Login(id, pin string) bool {
-	accountRepository := repository.NewAccountRepository()
+	accountRepository := repository.NewAccountRepo()
 
 	var err error
 
