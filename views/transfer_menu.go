@@ -24,7 +24,7 @@ func TransferMenu() {
 	if login {
 		err := controllers.Transfer(id, amount)
 		if err != nil {
-			panic(err.Error())
+			fmt.Println(err.Error())
 		}
 	} else {
 		fmt.Println("Wrong pin!")

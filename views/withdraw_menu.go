@@ -21,7 +21,7 @@ func WithdrawMenu() {
 	if login {
 		err := controllers.Withdraw(amount)
 		if err != nil {
-			panic(err.Error())
+			fmt.Println(err.Error())
 		}
 	} else {
 		fmt.Println("Wrong pin!")
