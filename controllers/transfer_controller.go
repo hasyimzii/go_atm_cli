@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/models"
-	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/hasyimzii/go_atm_cli/repositories"
 	"github.com/sirupsen/logrus"
 )
 
@@ -31,7 +31,7 @@ func Transfer(id string, amount int) error {
 			targetName = account.Name
 
 			// update data
-			accountRepository := repository.NewAccountRepo()
+			accountRepository := repositories.NewAccountRepo()
 			err := accountRepository.Update(Accounts)
 			if err != nil {
 				return err

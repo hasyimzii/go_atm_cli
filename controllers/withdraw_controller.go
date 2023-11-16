@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hasyimzii/go_atm_cli/models"
-	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/hasyimzii/go_atm_cli/repositories"
 	"github.com/sirupsen/logrus"
 )
 
@@ -19,7 +19,7 @@ func Withdraw(amount int) error {
 				(&Accounts[index]).Balance -= amount
 
 				// update data
-				accountRepository := repository.NewAccountRepo()
+				accountRepository := repositories.NewAccountRepo()
 				err := accountRepository.Update(Accounts)
 				if err != nil {
 					return err

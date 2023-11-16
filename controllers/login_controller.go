@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"github.com/hasyimzii/go_atm_cli/models"
-	"github.com/hasyimzii/go_atm_cli/repository"
+	"github.com/hasyimzii/go_atm_cli/repositories"
 	"github.com/sirupsen/logrus"
 )
 
@@ -10,7 +10,7 @@ var LoginId, LoginName string
 var Accounts []models.Account
 
 func Login(id, pin string) bool {
-	accountRepository := repository.NewAccountRepo()
+	accountRepository := repositories.NewAccountRepo()
 
 	var err error
 
