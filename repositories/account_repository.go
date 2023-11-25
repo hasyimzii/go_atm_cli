@@ -17,24 +17,15 @@ type accountRepository struct {
 }
 
 func NewAccountRepo() AccountRepoInterface {
-	return &accountRepository{file: "./models/data.json"}
+	return &accountRepository{file: "./data/data.json"}
 }
 
 func (repo *accountRepository) FindAll() ([]models.Account, error) {
-	// file, err := os.ReadFile(repo.file)
-	// if err != nil {
-	// 	return nil, err
-	// }
-
-	// err = json.Unmarshal([]byte(file), &accounts)
-	// if err != nil {
-	// 	return nil, err
-	// }
-
 	file, err := os.Open(repo.file)
 	if err != nil {
 		return nil, err
 	}
+	defer file.Close()
 
 	var accounts []models.Account
 	err = json.NewDecoder(file).Decode(&accounts)
@@ -46,20 +37,11 @@ func (repo *accountRepository) FindAll() ([]models.Account, error) {
 }
 
 func (repo *accountRepository) Update(accounts []models.Account) error {
-	// data, err := json.Marshal(accounts)
-	// if err != nil {
-	// 	return err
-	// }
-
-	// err = os.WriteFile(repo.file, data, 0666)
-	// if err != nil {
-	// 	return err
-	// }
-
 	file, err := os.Create(repo.file)
 	if err != nil {
 		return err
 	}
+	defer file.Close()
 
 	err = json.NewEncoder(file).Encode(accounts)
 	if err != nil {

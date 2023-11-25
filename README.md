@@ -22,28 +22,6 @@ go build
 ```
 5. Now the app is running
 
-## How to install (using Docker)
-(Must've installed: Docker)
-
-1. Clone this repository
-```sh
-git clone https://github.com/hasyimzii/go_atm_cli.git
-```
-2. Open repository in terminal
-```sh
-cd go_atm_cli
-```
-3. Excecute docker compose command
-```sh
-docker composer up
-```
-4. Now the code is running
-5. (If you want to remove the container & image) 
-```sh
-docker compose down
-docker image rm go_atm_cli:1.0.0
-```
-
 ## Login credentials
 - Credential file [./models/data.json](https://github.com/hasyimzii/go_atm_cli/tree/main/models/data.json)
 - The credential for login is ```id``` and ```pin``` of the user
