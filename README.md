@@ -1,8 +1,8 @@
 # Go ATM CLI
-Simple ATM (Automated Teller Machine) app in CLI using Go
+Simple ATM (Automated Teller Machine) app in CLI using Go.
 
 ## How to install (using Go)
-(Must've installed: Go Programming Language)
+```Requirement: Go Programming Language```
 
 1. Clone this repository
 ```sh
